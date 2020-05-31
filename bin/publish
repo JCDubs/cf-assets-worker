@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+STAGE="test"
+
+if [ $1 ];then
+    STAGE=$1
+fi
+
+sls deploy -s $STAGE
+exit $?

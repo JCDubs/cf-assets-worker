@@ -1,0 +1,29 @@
+service:
+  name: cloudflare-assets-worker
+
+provider:
+  name: cloudflare
+  config:
+    accountId: ${env:CLOUDFLARE_ACCOUNT_ID}
+    zoneId: ${env:CLOUDFLARE_ZONE_ID}
+
+plugins:
+  - serverless-cloudflare-workers
+
+custom:
+  stage: ${opt:stage, 'test'}
+  api: ${file(./config/apis.json)}
+
+functions:
+  cloudflare-assets-worker:
+    name: cloudflare-assets-worker-${self:custom.stage}
+    webpack: true
+    environment:
+      S3_URL: ${self:custom.api.${self:custom.stage}.s3Url}
+      STAGE: ${self:custom.stage}
+    script: src/index
+
+    events:
+      - http:
+          url: ${self:custom.api.${self:custom.stage}.domain}/assets/*
+          method: GET

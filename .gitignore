@@ -1,0 +1,14 @@
+worker
+.nyc_output
+.serverless
+coverage
+dist/
+node_modules/
+wrangler.toml
+*-error.log
+index.html
+server.js
+dist-server
+cucumber.json
+.DS_Store
+.scannerwork/

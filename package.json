@@ -1,0 +1,96 @@
+{
+  "name": "cloudflare-assets-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare worker to serve S3 assets",
+  "main": "index.js",
+  "scripts": {
+    "debug": "export DEBUG=* && export SLS_DEBUG=* && node --inspect-brk ./node_modules/.bin/serverless offline -s test --config serverless-dev.yml",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=json --reporter=html --reporter=cobertura --reporter=text mocha 'test/unit/**/*.spec.js' --require @babel/polyfill --require @babel/register --recursive",
+    "test-report": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha 'test/**/*.spec.js' --require @babel/polyfill --require @babel/register --recursive",
+    "lint": "node_modules/.bin/eslint -f json -o report.json .",
+    "lint-html": "node_modules/.bin/eslint -f html -o lint.html .",
+    "verify": "npm run lint && npm run test && npm run sonar",
+    "preview": "wrangler preview"
+  },
+  "author": "cloudflare",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "mime-types": "^2.1.24",
+    "ua-parser-js": "^0.7.20"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/register": "^7.7.4",
+    "axios": "^0.19.1",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^4.1.6",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.2.0",
+    "chai-match": "^1.1.1",
+    "cross-env": "^5.1.4",
+    "cucumber": "^4.2.1",
+    "cucumber-junit": "^1.7.1",
+    "eslint": "^5.15.1",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-sonarjs": "^0.3.0",
+    "express": "^4.17.1",
+    "mocha": "^6.0.2",
+    "node-fetch": "^2.6.0",
+    "nyc": "^11.6.0",
+    "serverless": "1.59.3",
+    "serverless-cloudflare-workers": "^1.2.0",
+    "shelljs": "^0.8.3",
+    "sinon": "^7.2.7",
+    "sonar-scanner": "^3.1.0"
+  },
+  "eslintIgnore": [
+    "*.spec.js",
+    "coverage"
+  ],
+  "babel": {
+    "presets": [
+      "env"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false,
+    "exclude": [
+      "test/*"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "watermarks": {
+      "lines": [
+        80,
+        95
+      ],
+      "functions": [
+        80,
+        95
+      ],
+      "branches": [
+        80,
+        95
+      ],
+      "statements": [
+        80,
+        95
+      ]
+    }
+  }
+}

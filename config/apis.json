@@ -1,0 +1,10 @@
+{
+  "test": {
+    "s3Url": "<YOUR TEST S3 STATIC BUCKET URL>",
+    "domain": "<YOUR TEST DOMAIN HERE>"
+  },
+  "prod": {
+    "s3Url": "<YOUR PROD S3 STATIC BUCKET URL>",
+    "domain": "<YOUR PROD DOMAIN HERE>"
+  }
+}
