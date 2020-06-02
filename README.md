@@ -21,7 +21,7 @@ To run the worker in preview mode, you need to create a `wrangler.toml` file in 
 ```
 name = "cloudflare-assets"
 type = "webpack"
-zone_id = "bac91639fea37465267b5c27cc53d116"
+zone_id = "<YOUR ZONE ID>"
 private = false
 account_id = "<YOUR ACCOUNT ID>"
 route = "<YOUR DOMAIN NAME>/assets/*"
