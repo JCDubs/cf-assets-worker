@@ -37,7 +37,7 @@
     "eslint-plugin-sonarjs": "^0.3.0",
     "express": "^4.17.1",
     "mocha": "^6.0.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "nyc": "^11.6.0",
     "serverless": "1.59.3",
     "serverless-cloudflare-workers": "^1.2.0",
