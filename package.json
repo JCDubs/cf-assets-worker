@@ -17,7 +17,7 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "mime-types": "^2.1.24",
-    "ua-parser-js": "^0.7.20"
+    "ua-parser-js": "^0.7.24"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
