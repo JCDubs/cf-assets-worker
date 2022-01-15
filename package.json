@@ -41,7 +41,7 @@
     "nyc": "^11.6.0",
     "serverless": "1.59.3",
     "serverless-cloudflare-workers": "^1.2.0",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "sinon": "^7.2.7",
     "sonar-scanner": "^3.1.0"
   },
